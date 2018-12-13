@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shift Select</title>
+    <style>
+        body {
+            background-color: yellow;
+        }
+
+        #check_box_list {
+            padding: 5px;
+            width: 400px;
+            margin: 50px auto;
+            background: black;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+
+        .item {
+            margin: 5px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 20px;
+        }
+
+        .item p {
+            display: inline;
+            line-height: 70px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="check_box_list">
+        <div class="item">
+            <input type="checkbox">
+            <p>Mail 1</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Mail 2</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Mail 3</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Mail 4</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Mail 5</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Mail 6</p>
+        </div>
+    </div>
+
+    <script>
+        let list = document.getElementById("check_box_list");
+        let shiftPressed = false;
+
+        list.addEventListener("click", function (event) {
+            event.stopPropagation();
+
+            if (event.target.type === "checkbox") {
+                let checkbox = event.target;
+                let parent = checkbox.parentNode;
+                
+                if (event.shiftKey) {
+                    selectAll();
+                }
+
+                if (checkbox.checked) parent.style.backgroundColor = "blue";
+                else parent.style.backgroundColor = "black";
+            }
+        });
+
+        function selectAll() {
+            
+        }
+
+    </script>
+</body>
+
+</html>
