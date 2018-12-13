@@ -68,26 +68,30 @@
 
     <script>
         let list = document.getElementById("check_box_list");
-        let shiftPressed = false;
 
         list.addEventListener("click", function (event) {
-            event.stopPropagation();
-
+            let checkedArr = [];
             if (event.target.type === "checkbox") {
-                let checkbox = event.target;
-                let parent = checkbox.parentNode;
-                
                 if (event.shiftKey) {
                     selectAll();
                 }
-
-                if (checkbox.checked) parent.style.backgroundColor = "blue";
-                else parent.style.backgroundColor = "black";
             }
         });
 
         function selectAll() {
-            
+            checkedArr = [];
+            let checkboxes = document.getElementsByTagName("input");
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked === true) {
+                    checkedArr.push(i);
+                }
+            }
+
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (i > checkedArr[0] && i < checkedArr[1]) {
+                    checkboxes[i].checked = true;
+                }
+            }
         }
 
     </script>
