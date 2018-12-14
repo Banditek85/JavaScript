@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML5 Custom Video Player</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="container">
+        <video width="600px" src="./assets/SampleVideo_1280x720_20mb.mp4"></video>
+        <div id="controls">
+            <div class="progress">
+                <div class="progress-filled"></div>
+            </div>
+            <input type="range" name="range" id="range" min="0" max="10" value="0">
+            <button class="play">Play</button>
+            <button class="full_screen">F</button>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
