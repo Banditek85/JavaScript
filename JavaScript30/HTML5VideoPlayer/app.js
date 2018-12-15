@@ -13,9 +13,14 @@ function updatePlayBtn() {
 }
 
 function updateTime() {
-    time.textContent =  video.currentTime.toFixed(1);
+    time.textContent = `${video.currentTime.toFixed(1)} / ${video.duration.toFixed(2)}`;
 }
 
+function updateRange() {
+    // Since this is event handler function, 'this' refers to the specific input, that was interacted with.
+    let name = this.name;
+    video[name] = this.value;
+}
 
 // Event listeners
 start_btn.addEventListener("click", togglePlay);
@@ -23,6 +28,5 @@ video.addEventListener("click", togglePlay);
 video.addEventListener("pause", updatePlayBtn);
 video.addEventListener("play", updatePlayBtn);
 video.addEventListener("timeupdate", updateTime)
-ranges.forEach(range => range.addEventListener("change", function() {
-    console.log("Value is " + this.value + ", Name is: " + this.name);
-}));
+// Attach event listeners to both range inputs at once
+ranges.forEach(range => range.addEventListener("change", updateRange));

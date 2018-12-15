@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,13 +11,13 @@
 <body>
     <div id="container">
         <div id="time"></div>
-        <video id="video" width="600px" src="./assets/SampleVideo_1280x720_20mb.mp4"></video>
+        <video id="video" width="600" src="./assets/SampleVideo_1280x720_20mb.mp4"></video>
         <div id="controls">
             <div class="progress">
                 <div class="progress-filled"></div>
             </div>
-            <input type="range" name="volume" id="range" min="0" max="10" value="0">
-            <input type="range" name="speed" id="range" min="0" max="10" value="0">
+            <input type="range" name="volume" id="range" min="0.0" max="1.0" step="0.1">
+            <input type="range" name="playbackRate" id="range" min="0" max="5" value="0">
             <button id="play" class="play">></button>
             <button class="full_screen">F</button>
         </div>
