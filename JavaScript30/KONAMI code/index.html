@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Type and guess the secret code (hint: it is 'codingisawesome')</h3>
+    <h4>You typed: <span id="log"></span></h4>
+  
+    <script>
+        let span = document.getElementById("log");
+        let arr = [];
+        window.addEventListener('keyup', findCode);
+        function findCode(e) {
+            arr.push(e.key);
+            span.textContent = arr;
+            if (arr.length > 15) {
+                arr.shift();
+                let str = arr.join('');
+                console.log(str);
+                if (str === 'codingisawesome') {
+                    alert('You got it!');
+                };
+            }
+        }
+    </script>
+</body>
+</html>
