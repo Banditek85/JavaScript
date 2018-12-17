@@ -2,6 +2,7 @@ const time = document.querySelector("#time");
 const video = document.getElementById("video");
 const start_btn = document.getElementById("play");
 const ranges = document.querySelectorAll("input[type='range']");
+const progress_f = document.querySelector(".progress-filled");
 
 function togglePlay() {
     if (video.paused) video.play();
@@ -14,6 +15,8 @@ function updatePlayBtn() {
 
 function updateTime() {
     time.textContent = `${video.currentTime.toFixed(1)} / ${video.duration.toFixed(2)}`;
+    let location = (video.currentTime.toFixed(0) * 100) / 117;
+    progress_f.style.width = `${location}%`;
 }
 
 function updateRange() {

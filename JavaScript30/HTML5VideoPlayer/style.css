@@ -34,3 +34,14 @@ opacity: 1;
 button {
     margin-left: 20px;
 }
+
+.progress {
+height: 10px;
+margin-bottom: 15px;
+background-color: black;
+}
+
+.progress-filled {
+    height: 10px;
+    background-color: yellow;
+}
