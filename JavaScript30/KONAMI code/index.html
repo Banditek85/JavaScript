@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
 </head>
+
 <body>
     <h3>Type and guess the secret code (hint: it is 'codingisawesome')</h3>
     <h4>You typed: <span id="log"></span></h4>
-  
+
     <script>
         let span = document.getElementById("log");
         let arr = [];
@@ -19,16 +22,17 @@
             arr.push(e.key);
             span.textContent = arr;
             // If lenght of the array is longer than the magic word, we start to remove the elements from the start of the array (the oldest char that was inputed)
-            if (arr.length > 15) {
-                arr.shift();
+            if (arr.length >= 15) {
                 let str = arr.join('');
                 console.log(str);
                 // We are joining the array to convert it to string and checking id it matches our magic word.
                 if (str === 'codingisawesome') {
-                    alert('You got it!');
+                    cornify_add();
                 };
+                arr.shift();
             }
         }
     </script>
 </body>
+
 </html>

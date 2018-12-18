@@ -1,0 +1,36 @@
+body {
+    height: 100%;
+    background-color: #ffff00;
+}
+
+.container {
+    width: 600px;
+    margin: auto;
+    padding: 50px;
+    color: white;
+    background-color: black;
+    text-align: justify;
+    border-radius: 10px;
+}
+
+img {
+    width: 300px;
+    margin: 20px;
+    opacity: 0.1;
+    transition: all 0.9s;
+}
+
+img:nth-of-type(odd) {
+    float: left;
+    transform: translateX(-200px) scale(0.5);
+}
+
+img:nth-of-type(even) {
+    float: right;
+    transform: translateX(200px) scale(0.5);
+}
+
+.showed {
+    transform: translateX(0px) scale(1) !important;
+    opacity: 1;
+}
