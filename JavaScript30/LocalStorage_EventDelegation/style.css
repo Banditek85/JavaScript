@@ -1,0 +1,35 @@
+html {
+    min-height: 100%;
+}
+
+body {
+    background: linear-gradient(to bottom, green, yellow);
+}
+
+.tapas {
+    width: 300px;
+    margin: 200px auto;
+    text-align: center;
+    border: 3px solid green;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    box-shadow: 8px 6px 3px #222;
+    transform: skewY(-1deg);
+}
+
+input[type="submit"] {
+    padding: 15px;
+    background-color: green;
+    border-radius: 5px;
+    border: 0px;
+    color: white;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+li {
+    display: block;
+    list-style: none;
+}

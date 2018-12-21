@@ -11,11 +11,12 @@ let lastX = 0;
 let lastY = 0;
 let hue = 0;
 
-canvas.addEventListener('mousedown', (e) => { 
+canvas.addEventListener('mousedown', (e) => {
     isDrawing = true;
     lastX = e.offSetX;
     lastY = e.offsetY;
 });
+
 canvas.addEventListener('mouseup', () => { isDrawing = false });
 canvas.addEventListener('mouseleave', () => { isDrawing = false });
 canvas.addEventListener("mousemove", draw);
