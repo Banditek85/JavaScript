@@ -42,7 +42,7 @@ function checkTapa(value) {
     return false;
 }
 
-// Handler function for checkbox click which calls chechInArray function
+// Handler function for checkbox click which calls checkInArray function
 function boxChecked(event) {
     if (event.target.type === "checkbox") {
         let parent = event.target.parentNode;
