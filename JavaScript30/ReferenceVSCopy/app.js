@@ -27,7 +27,6 @@ const team4 = [...players];
 // or
 const team5 = Array.from(players);
 
-
 // OBJECTS
 const person = {
     name: 'Wes Bos',
