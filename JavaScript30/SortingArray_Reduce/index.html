@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- Sorting band names without articles -->
+    <ul id="sorted_bands"></ul>
+
+
+    <!-- Tally string times with reduce -->
+    <ul>
+        <li data-time="6:03">
+            Video 1
+        </li>
+        <li data-time="3:25">
+            Video 2
+        </li>
+        <li data-time="2:98">
+            Video 3
+        </li>
+        <li data-time="4:15">
+            Video 4
+        </li>
+    </ul>
+
+    <script>
+        const bands = ["The Plot in You", "The Devil Wears Prada", "Pierce the Veil", "Norma Jean", "The Bled", "The Midway State", "We Came as Romans", "Counterparts", "Oh, Sleeper", "A skylit Drive", "Anywhere But Here", "An Old Dog"];
+
+     // Sorting band names without articles (the, an, a)
+     // Create utility function to remove the article
+     function strip(bandName) {
+        return bandName.replace(/^(a |the |an )/i, '').trim();
+     }
+
+     // Array.sort returns new array, it returns 1 to put 'a' in front of 'b' and vice versa.
+     const sorted_bands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1 );
+     console.log(sorted_bands);
+
+     // Display sorted original array in the ul element.
+     document.querySelector("#sorted_bands").innerHTML = sorted_bands.map(band => `<li>${band}</li>`).join("");
+     //**********************************************************************************************
+
+     // Tally String Times with Reduce
+
+     // QuerySelectorAll will return NodeList, which only has forEach function but no other useful array functions, so we need to convert it to the Array with Array.from. Could also use ES6 spread: [...document.querySelectorAll("[data-time]")].
+     const videos = Array.from(document.querySelectorAll("li[data-time]"));
+
+     // Converting times strings to seconds numbers
+     const times = videos.map(item => item.dataset.time)
+     .map(timeCode => {
+         // ES6 destructuring:
+        const [minutes, seconds] = timeCode.split(":").map(parseFloat);
+        return (minutes * 60) + seconds;
+     })
+
+     console.log("times array before reduce:");
+     console.log(times);
+
+     let total_seconds = times.reduce((prev, curr) => {return prev + curr;})
+
+     // Calculating total number of hours, minutes and seconds from total_seconds amount:
+     let secondsLeft = total_seconds;
+     const hours = Math.floor(secondsLeft / 3600);
+     secondsLeft = secondsLeft % 3600;
+
+     const mins = Math.floor(secondsLeft / 60);
+     secondsLeft = secondsLeft % 60;
+
+     console.log(`Total videos running time is ${hours} hours, ${mins} minutes and ${secondsLeft} seconds`);
+    </script>
+</body>
+</html>

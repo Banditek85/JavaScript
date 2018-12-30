@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+#td_list {
+    width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin-bottom: 5px;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+
+}
+
+b {
+    color: darkblue;
+    font-size: 1.5em;
+}
+
+button {
+    background-color: #60dc23;
+    border: 1px solid #60dc23;
+    padding: 10px;
+    color: #222;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all .5s;
+}
+
+button:hover {
+    box-shadow: 2px 2px 2px #222;
+}
+
+input[type="text"] {
+    border: 1px solid gray;
+    text-align: center;
+    color: rgba(10, 10, 10, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+input[type="checkbox"] {
+    float: left;
+}
