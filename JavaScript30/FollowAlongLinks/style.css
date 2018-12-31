@@ -1,0 +1,52 @@
+html, body {
+    min-height: 100%;
+}
+
+body {
+    background: linear-gradient(150deg, black 30%, darkred);
+}
+
+.container {
+    width: 40%;
+    margin: 100px auto;
+    color: white;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: justify;
+}
+
+nav {
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+    margin-left: -35px;
+}
+
+nav ul {
+    list-style: none;
+    font-weight: bold;
+}
+
+nav li {
+    display: inline-block;
+    margin: 20px;
+}
+
+a {
+    color: orangered;
+    text-decoration: none;
+    transition: all .5s;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+/* This class is applied to the span element which is following the currect link that is hovered */
+.highlighted {
+    background-color: blueviolet;
+    transition: all .5s;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}

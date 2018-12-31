@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+}
+
+a {
+  color: azure;
+}
+
+nav {
+  background-color: darkslateblue;
+  border-bottom: 2px solid white;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+nav > ul > li {
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  color: white;
+  border-radius: 3px;
+  position: absolute;
+  transition: all .3s;
+}
+
+nav > ul > li:hover .dropdown {
+  /* We need to set display to block to be able to animate the opacity later */
+  display: block;
+  opacity: 0;
+  animation: myMenu .5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes myMenu {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.puppy {
+  background-color: darkblue;
+  border-radius: 10px;
+  transition: all .5s;
+  position: absolute;
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.dropdown li {
+  padding: 5px;
+}
+
+.inner_container {
+  display: flex;
+  height: calc(100% - 55px);
+}
+
+aside {
+  background-color: darkblue;
+  color: aliceblue;
+  flex-grow: 1;
+}
+
+.main {
+  flex-grow: 4;
+}
+
+table {
+  text-align: center;
+  width: 65%;
+  margin:90px auto;
+}
+
+th {
+  background-color: darkblue;
+  color: aliceblue;
+}
+
+td, th {
+border: 1px solid darkblue;
+border-radius: 6px;
+padding: 4px;
+}
+
+button {
+  background-color: aliceblue;
+  border: 1px solid darkblue;
+  padding: 5px;
+  border-radius: 4px;
+}
