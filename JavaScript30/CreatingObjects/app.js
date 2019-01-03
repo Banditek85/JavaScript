@@ -16,7 +16,7 @@ function createDog(name, breed, color) {
     name: name,
     breed: breed,
     color: color,
-    speak: function(sound) {
+    speak: function (sound) {
       console.log(name + " says " + sound);
     }
   }
@@ -37,7 +37,7 @@ function Dog(name, breed, color) {
 
 /* Because of JavaScript prototypal inheritance, functions declared on the prototype property (which is an object) of the constructor function are 
  stored in memory only once and are accesed by instance objects by reference (pointer). */
-Dog.prototype.speak = function() {
+Dog.prototype.speak = function () {
   console.log(this.name + " says hello");
 }
 

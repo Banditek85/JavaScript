@@ -15,7 +15,6 @@ function submit(event) {
     // input field must have some value
     if (!newTapa) alert("You can't enter empty tapa...");
     else {
-
         // tapa must not be already stored in an array
         if (!checkTapa(newTapa)) {
             let tapa = {
