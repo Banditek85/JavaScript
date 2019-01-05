@@ -7,6 +7,7 @@ html, body {
 }
 
 body {
+    position: relative;
     background: linear-gradient(to bottom right, #42ebf4, #0c99a0); 
 }
 
@@ -44,4 +45,15 @@ background-color: black;
 .progress-filled {
     height: 10px;
     background-color: yellow;
+}
+
+.speed {
+    border: 2px dashed black;
+    height: 200px;
+    width: 50px;
+}
+
+.bar {
+    height: 100%;
+    background-color: #0c99a0;
 }

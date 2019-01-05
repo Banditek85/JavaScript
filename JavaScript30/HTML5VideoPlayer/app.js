@@ -33,3 +33,18 @@ video.addEventListener("play", updatePlayBtn);
 video.addEventListener("timeupdate", updateTime)
 // Attach event listeners to both range inputs at once
 ranges.forEach(range => range.addEventListener("change", updateRange));
+
+// Vertical speed bar
+const v_speed = document.querySelector(".speed");
+const v_bar = v_speed.querySelector(".bar");
+
+v_speed.addEventListener("mousemove", function(e) {
+    // Where inside the v_speed container is the mouse
+    const y = e.pageY - this.offsetTop;
+    // this.offsetHeight is the entire height of v_speed container
+    const percent = y / this.offsetHeight;
+    console.log('percent ' + percent);
+    console.log('offsetTop '+ this.offsetTop);
+    v_bar.style.height = y + 'px';
+    console.log(y);
+});
