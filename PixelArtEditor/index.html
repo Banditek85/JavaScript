@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Pixel Art Editor</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <canvas width="800" height="500"></canvas>
+      <div class="controls">
+        <span class="control">
+          <label for="tool">Tool</label>
+          <select name="Tool" id="tool">
+            <option value="Pencil">Pencil</option>
+            <option value="Brush">Brush</option>
+            <option value="Pen">Pen</option>
+          </select>
+        </span>
+
+        <span class="control">
+          <label for="color">Color:</label>
+          <input type="color" name="Color" id="color" />
+        </span>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

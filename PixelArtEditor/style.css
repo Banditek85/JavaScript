@@ -1,0 +1,16 @@
+.container {
+  width: 800px;
+  margin: auto;
+  border-radius: 3px;
+  border: 2px solid violet;
+}
+
+canvas {
+  margin-bottom: 30px;
+}
+
+.control {
+  margin: 20px;
+  border-bottom: 1px solid green;
+  padding-bottom: 10px;
+}
