@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Šifranti MP</title>
+    <style>
+      .btn, #pocisti_tabelo_btn {
+        background-color: rgb(7, 63, 7);
+        color: azure;
+        padding: 10px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      #pocisti_tabelo_btn {
+        background-color: darkred;
+        color: white;
+      }
+
+      th {
+        padding: 4px;
+        background-color: rgb(7, 63, 7);
+        color: aliceblue;
+      }
+
+      td {
+        border-bottom: 2px solid rgb(7, 63, 7);
+      }
+
+      .controls {
+        margin: 40px 30px 40px 0;
+        text-align: center;
+      }
+
+      .controls > span {
+        margin-right: 30px;
+      }
+
+      .controls input {
+        height: 20px;
+        border-radius: 5px;
+      }
+
+      .controls select {
+        height: 30px;
+        border-radius: 5px;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button class="btn" onclick="initialize()">Pridobi podatke</button>
+
+      <button id="pocisti_tabelo_btn">Počisti tabelo</button>
+
+      <div id="metadata"></div>
+      <hr />
+
+      <div class="controls">
+        <span>
+          <label for="skupine">Skupina</label>
+          <select id="skupine" name="skupine"></select>
+        </span>
+
+        <span>
+          <label for="search">Išči po nazivu</label>
+          <input id="isci_input" type="text" />
+        </div>
+      </span>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Šifra</th>
+            <th>Skupina</th>
+            <th>Podskupina</th>
+            <th>Naziv</th>
+            <th>Pooblaščen zdravnik</th>
+            <th>Velja od</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>

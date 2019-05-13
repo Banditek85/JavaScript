@@ -35,8 +35,7 @@ function Dog(name, breed, color) {
   this.color = color;
 }
 
-/* Because of JavaScript prototypal inheritance, functions declared on the prototype property (which is an object) of the constructor function are 
- stored in memory only once and are accesed by instance objects by reference (pointer). */
+/* Because of JavaScript prototypal inheritance, functions declared on the prototype property (which is an object) of the constructor function are stored in memory only once and are accesed by instance objects by reference (pointer). */
 Dog.prototype.speak = function () {
   console.log(this.name + " says hello");
 }

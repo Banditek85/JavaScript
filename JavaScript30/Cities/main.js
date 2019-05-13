@@ -41,6 +41,9 @@ function findMatches(word, cities) {
     const regex = new RegExp(word, 'gi');
     // filter objects in cities array based on whether their name property (individual city) matches input value
     return cities.filter(obj => {
+
+        /* if city name matches, obj.name.match(regex) will return array of hits, which is truthy, that's why whole city name will be included in result array. If it does not match match function will return null which is 
+        falsy and whole element will not be included in result array */ 
         return obj.name.match(regex);
     })
 }
