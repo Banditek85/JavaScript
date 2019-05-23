@@ -29,16 +29,14 @@ class Utils {
             <td>${issue.severity}</td></tr>`;
     }).join("");
     tbody.innerHTML = tbody_content;
-
-    if (!issues.length) {
-    count.innerHTML = "0";  
-    } else count.innerHTML = issues.length;
+    count.innerHTML = issues.length;
   }
 }
 
 // Funkcija doda event listenerje DOM elementom
 function addListeners() {
   document.querySelector("form").addEventListener("submit", event => {
+    event.preventDefault();
     Utils.storeIssue();
     Utils.displayIssues(issues);
   });
