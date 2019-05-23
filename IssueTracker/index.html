@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Issue Tracker</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <style>
+      .spacer {
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <div class="container">
+          <h1>Issue tracker</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">Current</a></li>
+        <li role="presentation"><a href="#">Archive</a></li>
+      </ul>
+
+      <div class="spacer"></div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <form>
+            <div class="form-group has-success has-feedback">
+              <label for="issue_title">Issue title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="issue_title"
+                placeholder="Issue"
+              />
+              <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="issue_title">Issue severity</label>
+              <select id="issue_severity" class="form-control">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="issue_description">Issue description</label>
+              <input
+                type="text"
+                class="form-control"
+                id="issue_description"
+                placeholder="Description"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+          </form>
+        </div>
+        <div class="col-sm-6">
+          <div class="spacer"></div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Current issues: <span id="issue_count"></span></div>
+            <div class="panel-body">
+              <p>These issues are currently being resolved:</p>
+            </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Issue</th>
+                  <th>Description</th>
+                  <th>Severity</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
