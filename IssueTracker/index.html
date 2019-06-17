@@ -14,6 +14,11 @@
         margin-top: 20px;
         margin-bottom: 30px;
       }
+
+      .glyphicon:hover {
+        cursor: pointer;
+      }
+
     </style>
   </head>
   <body>
@@ -26,7 +31,6 @@
     </div>
 
     <div class="container">
-
       <ul class="nav nav-tabs">
         <li role="presentation" class="active"><a href="#">Current</a></li>
         <li role="presentation"><a href="#">Archive</a></li>
@@ -38,7 +42,7 @@
         <div id="Current" class="row">
           <div class="col-sm-6">
             <form>
-              <div class="form-group has-success has-feedback">
+              <div class="form-group has-feedback">
                 <label for="issue_title">Issue title</label>
                 <input
                   type="text"
@@ -46,9 +50,7 @@
                   id="issue_title"
                   placeholder="Issue"
                 />
-                <span
-                  class="glyphicon glyphicon-ok form-control-feedback"
-                ></span>
+                <!-- <span class="glyphicon glyphicon-ok form-control-feedback"></span> -->
               </div>
 
               <div class="form-group">
@@ -89,6 +91,8 @@
                     <th>Issue</th>
                     <th>Description</th>
                     <th>Severity</th>
+                    <th>Delete</th>
+                    <th>Archive</th>
                   </tr>
                 </thead>
                 <tbody></tbody>
@@ -97,9 +101,25 @@
           </div>
         </div>
 
-        <div id="Archive" class="row">
+        <div id="Archive" class="row" style="display: none;">
           <div class="col-xs-12">
-            <h1>This is archive</h1>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>Archived</h4>
+              </div>
+              <div class="panel-body">
+                <table class="table">
+                  <thead>
+                    <th>Issue</th>
+                    <th>Description</th>
+                    <th>Severity</th>
+                    <th>Archived at</th>
+                    <th>Delete from archive</th>
+                  </thead>
+                  <tbody id="archive_tbody"></tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>

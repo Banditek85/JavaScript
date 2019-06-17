@@ -1,5 +1,6 @@
-// Array issue-jev, model
+// Modela za issue-je in arhiv
 let issues = [];
+let archive = [];
 
 // Globalna DOM referenca za formo
 const form = document.querySelector("form");
@@ -10,6 +11,19 @@ function Issue(title, severity, description) {
   this.severity = severity;
   this.description = description;
 }
+
+function drawTable(arr) {
+  let result = "";
+  arr.forEach(element => {
+    let values = Object.values(element);
+    let i_result = values.map(function(value) {
+        return `<td>${value}</td>`;
+      }).join("");
+    result += `<tr>${i_result}</tr>`;
+  });
+  return result;
+}
+
 
 // Razred ki vsebuje util funkcije
 class Utils {
@@ -27,9 +41,11 @@ class Utils {
       .map(issue => {
         return `<tr><td>${issue.title}</td>
                 <td>${issue.description}</td>
-                <td>${issue.severity}</td></tr>`;
-      })
-      .join("");
+                <td>${issue.severity}</td>
+                <td><span class='glyphicon glyphicon-trash'></span></td>
+                <td><span class='glyphicon glyphicon-arrow-up'></span></td>
+                </tr>`;
+      }).join("");
 
     document.getElementById("issue_count").innerHTML = issues.length;
 
@@ -43,13 +59,29 @@ class Utils {
     }
   }
 
+  static archiveIssue(p_issue) {
+    const table = document.getElementById("archive_tbody");
+    const icon_str =  "<span class='glyphicon glyphicon-trash'></span>";
+
+    const now = new Date();
+
+    const archived_issue = {
+      issue: p_issue.issue,
+      description: p_issue.description,
+      severity: p_issue.severity,
+      archived_at: now.toString(),
+      delete: icon_str
+    }
+    archive.push(archived_issue);
+    table.innerHTML = drawTable(archive);
+  }
+
   static changeTab(tab_name) {
     const components = document.querySelector("#sub_container").children;
     const ul_tabs = document.querySelector(".nav.nav-tabs").children;
 
     for (const component of components) {
-      if (component["id"] === tab_name) 
-        component.style.display = "block";
+      if (component["id"] === tab_name) component.style.display = "block";
       else component.style.display = "none";
     }
 
@@ -72,6 +104,23 @@ function addListeners() {
   document.querySelector(".nav.nav-tabs").addEventListener("click", e => {
     Utils.changeTab(e.target.textContent);
   });
+
+  document.getElementsByTagName("tbody")[0].addEventListener("click", function(event) {
+      const clickedIndex = event.target.parentNode.parentNode.rowIndex - 1;
+      
+      if (event.target.classList.value.includes("trash")) {
+        issues.splice(clickedIndex, 1);
+        Utils.displayIssues(issues);
+
+      } else if (event.target.classList.value.includes("arrow")) {
+
+        const current_issue = issues[clickedIndex];
+
+        Utils.archiveIssue(current_issue);
+        issues.splice(clickedIndex, 1);
+        Utils.displayIssues(issues);
+      }
+    });
 }
 
 // Page load
