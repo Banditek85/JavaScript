@@ -16,9 +16,9 @@ function drawTable(arr) {
   let result = "";
   arr.forEach(element => {
     let values = Object.values(element);
-    let i_result = values.map(function(value) {
-        return `<td>${value}</td>`;
-      }).join("");
+    let i_result = values.map(function (value) {
+      return `<td>${value}</td>`;
+    }).join("");
     result += `<tr>${i_result}</tr>`;
   });
   return result;
@@ -61,7 +61,7 @@ class Utils {
 
   static archiveIssue(p_issue) {
     const table = document.getElementById("archive_tbody");
-    const icon_str =  "<span class='glyphicon glyphicon-trash'></span>";
+    const icon_str = "<span class='glyphicon glyphicon-trash'></span>";
 
     const now = new Date();
 
@@ -91,37 +91,64 @@ class Utils {
       else ul_tabs[i].classList.remove("active");
     }
   }
+
+  static validate(form) {
+    var valid = 1;
+    console.log(valid);
+    for (const input of form.elements) {
+      if (!input.value && input.tagName === "INPUT") {
+        input.classList.add("invalid");
+        input.placeholder = "You must enter value here!";
+        valid = 0;
+      } else {
+        input.classList.remove("invalid");
+        input.placeholder = "";
+      }
+    }
+    return valid;
+  }
 }
 
 // Funkcija doda event listenerje DOM elementom
 function addListeners() {
   document.querySelector("form").addEventListener("submit", e => {
-    e.preventDefault();
-    Utils.storeIssue();
-    Utils.displayIssues(issues);
+    if (Utils.validate(form)) {
+      e.preventDefault();
+      Utils.storeIssue();
+      Utils.displayIssues(issues);
+    }
   });
 
   document.querySelector(".nav.nav-tabs").addEventListener("click", e => {
     Utils.changeTab(e.target.textContent);
   });
 
-  document.getElementsByTagName("tbody")[0].addEventListener("click", function(event) {
-      const clickedIndex = event.target.parentNode.parentNode.rowIndex - 1;
-      
-      if (event.target.classList.value.includes("trash")) {
-        issues.splice(clickedIndex, 1);
-        Utils.displayIssues(issues);
+  document.getElementsByTagName("tbody")[0].addEventListener("click", function (event) {
+    const clickedIndex = event.target.parentNode.parentNode.rowIndex - 1;
 
-      } else if (event.target.classList.value.includes("arrow")) {
+    if (event.target.classList.value.includes("trash")) {
+      issues.splice(clickedIndex, 1);
+      Utils.displayIssues(issues);
 
-        const current_issue = issues[clickedIndex];
+    } else if (event.target.classList.value.includes("arrow")) {
 
-        Utils.archiveIssue(current_issue);
-        issues.splice(clickedIndex, 1);
-        Utils.displayIssues(issues);
-      }
-    });
+      const current_issue = issues[clickedIndex];
+
+      Utils.archiveIssue(current_issue);
+      issues.splice(clickedIndex, 1);
+      Utils.displayIssues(issues);
+    }
+  });
+
+  document.getElementById("archive_tbody").addEventListener("click", function (event) {
+    const clickedIndex = event.target.parentNode.parentNode.rowIndex - 1;
+    if (event.target.classList.value.includes("trash")) {
+      archive.splice(clickedIndex, 1);
+      this.innerHTML = drawTable(archive);
+    }
+  });
 }
+
 
 // Page load
 addListeners();

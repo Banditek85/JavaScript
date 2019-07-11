@@ -1,0 +1,8 @@
+{
+    "files.exclude": {
+        ".vscode": true,
+        "node_modules": true
+    },
+    "terminal.integrated.fontFamily": "Lucida console",
+    "terminal.integrated.fontSize": 13
+}
