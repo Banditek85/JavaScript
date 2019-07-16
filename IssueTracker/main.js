@@ -107,6 +107,16 @@ class Utils {
     }
     return valid;
   }
+
+  static saveLocalStorage(archive) {
+    console.log('saving local storage..');
+    localStorage.setItem('archive', JSON.stringify(archive));
+  }
+
+  static retrieveLocalStorage() {
+    archive = JSON.parse(localStorage.getItem("archive"));
+    document.getElementById("archive_tbody").innerHTML = drawTable(archive);
+  }
 }
 
 // Funkcija doda event listenerje DOM elementom
@@ -133,23 +143,52 @@ function addListeners() {
     } else if (event.target.classList.value.includes("arrow")) {
 
       const current_issue = issues[clickedIndex];
-
       Utils.archiveIssue(current_issue);
       issues.splice(clickedIndex, 1);
       Utils.displayIssues(issues);
+      Utils.saveLocalStorage(archive);
     }
   });
 
   document.getElementById("archive_tbody").addEventListener("click", function (event) {
     const clickedIndex = event.target.parentNode.parentNode.rowIndex - 1;
     if (event.target.classList.value.includes("trash")) {
-      archive.splice(clickedIndex, 1);
-      this.innerHTML = drawTable(archive);
+        archive.splice(clickedIndex, 1);
+        this.innerHTML = drawTable(archive);
     }
   });
 }
 
-
 // Page load
 addListeners();
 Utils.displayIssues(issues);
+Utils.retrieveLocalStorage();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
