@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            background-image: linear-gradient(rgb(89, 125, 223),rgb(47, 33, 167));
+            height: 100vh;
+        }
+
+        .list_container {
+            padding: 1rem;
+            margin-top: 1rem;
+            width: 400px;
+            margin: 50px auto;
+            border-radius: 4px;
+            box-shadow: 1px 1px 2px 1px #333;
+        } 
+
+        #my_list li {
+            border-radius: 4px;
+            list-style: none;
+            padding: 1rem;
+            margin: 1rem;
+            border: 1px solid black;
+            cursor: move;
+            background-color: rgb(74, 139, 9);
+        }
+
+        #my_list li {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #FFF;
+            text-align: center;
+            transition-duration: 0.2s;
+        }
+
+        #my_list li.dragged {
+            background-color: rgb(112, 216, 112);
+        }
+
+        #my_list li.drag_target {
+            background-color: rgb(6, 68, 68);
+        }
+
+        #my_list li.drag_target p {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="list_container">
+        <ul id="my_list"></ul>
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>
