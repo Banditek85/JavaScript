@@ -29,14 +29,18 @@
             border: 1px solid black;
             cursor: move;
             background-color: rgb(74, 139, 9);
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            transition: opacity 2000ms;
         }
 
-        #my_list li {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #FFF;
-            text-align: center;
-            transition-duration: 0.2s;
+        .unvisible {
+            opacity: 0;
+        }
+
+        .visible {
+            opacity: 1;
         }
 
         #my_list li.dragged {
