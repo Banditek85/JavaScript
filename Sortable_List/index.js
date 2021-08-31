@@ -1,3 +1,10 @@
+const list = [
+    { id: 1, name: "Apples" },
+    { id: 2, name: "Onions" },
+    { id: 3, name: "Carrots" },
+    { id: 4, name: "Plums" }
+];
+
 Array.prototype.swap = function (x, y) {
     const temp = this[x];
     this[x] = this[y];
@@ -12,21 +19,19 @@ function render_list(p_list) {
     }).join("");
 };
 
-const list = [
-    { id: 1, name: "Apples" },
-    { id: 2, name: "Onions" },
-    { id: 3, name: "Carrots" },
-    { id: 4, name: "Plums" }
-];
+function animate_swap(dragged_id, dropzone_id) {
+    const dragged = document.getElementById(dragged_id);
+    const dropzone = document.getElementById(dropzone_id);
 
-render_list(list);
+    const dragged_box = dragged.getBoundingClientRect();
+    const dropzone_box =  dropzone.getBoundingClientRect();
 
-my_list.addEventListener("dragstart", onDragStart); // on dragged element
-my_list.addEventListener("drop", onDragDrop); // on dropped target
-my_list.addEventListener("dragover", onDragOver); // on dropped target
-my_list.addEventListener("dragenter", onDragEnter);
-my_list.addEventListener("dragend", onDragEnd);
-my_list.addEventListener("dragleave", onDragLeave);
+    const dragged_travelY = -(dragged_box.top - dropzone_box.top);
+    const dropzone_travelY = -(dropzone_box.top - dragged_box.top);
+
+    dragged.style.transform = "translateY(" + dragged_travelY + "px)";
+    dropzone.style.transform = "translateY(" + dropzone_travelY + "px)";
+}
 
 function onDragStart(e) {
     if (e.target.classList.contains("draggable")) {
@@ -50,10 +55,13 @@ function onDragDrop(e) {
         let index1 = list.findIndex(item => item.id == dragged_id);
         let index2 = list.findIndex(item => item.id == e.target.id);
 
-        // console.log(`Dropping element with id ${dragged_id} at index ${index1} to element with id ${e.target.id} at index ${index2}`);
-
+        animate_swap(dragged_id, e.target.id);
+        
         list.swap(index1, index2);
-        render_list(list);
+
+        setTimeout(function() {
+            render_list(list);
+        }, 510); 
     }
 }
 
@@ -74,4 +82,24 @@ function onDragEnter(e) {
 
 function onDragOver(e) {
     e.preventDefault();
+}
+
+
+// Setup
+render_list(list);
+
+my_list.addEventListener("dragstart", onDragStart); // on dragged element
+my_list.addEventListener("drop", onDragDrop); // on dropped target
+my_list.addEventListener("dragover", onDragOver); // on dropped target
+my_list.addEventListener("dragenter", onDragEnter);
+my_list.addEventListener("dragend", onDragEnd);
+my_list.addEventListener("dragleave", onDragLeave);
+
+const items = document.getElementsByClassName("draggable");
+console.log(items);
+
+for (const item of items) {
+    item.addEventListener("click", function() {
+        console.log("animation end");
+    });
 }
